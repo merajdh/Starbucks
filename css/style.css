@@ -27,6 +27,8 @@
   --data-height: attr(data-height);
   --menu-pad: 6rem;
   --body-pad: 3rem;
+
+  --nav-shadow: #3b3b3b4f;
 }
 
 *,
@@ -98,8 +100,8 @@ img {
 .btn {
   border-radius: 2.5rem;
   font-weight: 800;
-  font-size: 1.4rem;
-  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  padding: 1rem 2.5rem;
 }
 
 .btn__outlline:hover {
@@ -310,8 +312,7 @@ img {
   padding: 2rem var(--body-pad);
   z-index: 5;
   margin-bottom: 3rem;
-  box-shadow: 0px 1px 1px #3b3b3b4f;
-  filter: drop-shadow(#3b3b3b3d 1rem 1rem 10px);
+  box-shadow: 0px 1px 1px var(--nav-shadow);
 }
 
 .collapsible {
@@ -321,20 +322,13 @@ img {
   flex-direction: column;
 }
 
-.nav__links {
-  font-weight: 500;
-  font-size: 1.8rem;
-  opacity: 0.9;
-  padding: 0;
-}
-
 /* ham menu */
 .nav__hamburger-menu {
   height: 24px;
   width: 24px;
-  margin-left: auto;
+  margin: 0 auto;
   position: absolute;
-  margin: var(--menu-pad);
+  margin: 4rem;
   right: 0;
   top: 0;
   z-index: 4;
@@ -388,7 +382,7 @@ img {
   max-width: 450px;
   position: fixed;
   top: 0;
-  right: -500px;
+  right: -450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -402,6 +396,8 @@ img {
   right: 0;
   position: fixed;
   bottom: 0;
+  padding-top: 5rem;
+  padding-left: 2rem;
 }
 
 .lock-scroll {
@@ -419,22 +415,39 @@ img {
 .nav__links {
   padding: var(--menu-pad) 0;
   text-align: start;
+  font-weight: 500;
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+.nav__links .link {
+  padding: 2rem 1.5rem !important;
 }
 .nav__links li {
   height: 6rem;
 }
-.nav__auth .btn {
-  padding: 1rem 2rem;
-}
 .nav__links li a {
-  padding: 4rem 2rem;
+  padding: 2rem 0;
+}
+
+.nav__auth.flex {
+  gap: 1.5rem;
+}
+.nav__auth .btn {
+  padding: 0.8rem 1.5rem;
 }
 .nav__auth_loc:hover {
   color: var(--color-primary);
   fill: var(--color-primary);
   cursor: pointer;
 }
+
+.nav__auth_btns .flex {
+  flex-direction: row;
+  align-items: end;
+}
+
 .nav__auth_loc.flex {
+  flex-direction: row;
   align-items: end;
 }
 .nav__auth .link {
@@ -470,14 +483,13 @@ img {
   .nav__links {
     padding: 0;
   }
-
+  .nav__links .link {
+    padding: 2rem 4rem;
+  }
   .nav__links li a {
     display: inline-block;
     text-align: center;
     padding: 1.5rem;
-  }
-  .nav__auth.flex {
-    gap: 1.5rem;
   }
   .nav__auth a:last-of-type {
     order: -1;

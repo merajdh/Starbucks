@@ -60,6 +60,7 @@ const lockScroll = function lockScroll() {
   }
 };
 
+//close or open menu
 const menuToggle = function () {
   lockScroll();
   navToggler.classList.toggle("active");
@@ -69,6 +70,14 @@ const menuToggle = function () {
   //lock scroll
   main.style.height = main.offsetHeight - 54 + "px";
 };
+
+const menuClose = function () {
+  lockScroll();
+
+  navToggler.classList.remove("active");
+  offScreenMenu.classList.remove("active");
+  collapsable.classList.remove("active");
+};
 const cancelMenu = function () {
   navToggler.classList.contains("active") && menuToggle();
   console.log("test");
@@ -76,3 +85,13 @@ const cancelMenu = function () {
 main.addEventListener("click", cancelMenu);
 
 navToggler.addEventListener("click", menuToggle);
+
+// close collapsible content when off screen clicked
+document.addEventListener("click", (event) => {
+  if (
+    !navToggler.contains(event.target) &&
+    !offScreenMenu.contains(event.target)
+  ) {
+    navToggler.classList.contains("active") && menuClose();
+  }
+});
